@@ -31,5 +31,9 @@
 *.out
 *.app
 
+# other
 *.VC.opendb
 *.VC.db
+*.suo
+*.tlog
+
