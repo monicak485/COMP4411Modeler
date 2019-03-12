@@ -35,7 +35,7 @@ void SampleModel::draw()
 
 	// draw the floor
 	setAmbientColor(.1f,.1f,.1f);
-	setDiffuseColor(COLOR_GREEN);
+	setDiffuseColor(COLOR_RED);
 	glPushMatrix();
 	glTranslated(-5,0,-5);
 	drawBox(10,0.01f,10);
@@ -43,7 +43,7 @@ void SampleModel::draw()
 
 	// draw the sample model
 	setAmbientColor(.1f,.1f,.1f);
-	setDiffuseColor(COLOR_BLUE);
+	setDiffuseColor(COLOR_GREEN);
 	glPushMatrix();
 	glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
 
