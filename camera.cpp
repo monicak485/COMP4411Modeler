@@ -1,4 +1,4 @@
-#include <windows.h>
+﻿#include <windows.h>
 #include <Fl/gl.h>
 #include <gl/glu.h>
 
@@ -181,6 +181,33 @@ void Camera::applyViewingTransform() {
 	gluLookAt(	mPosition[0], mPosition[1], mPosition[2],
 				mLookAt[0],   mLookAt[1],   mLookAt[2],
 				mUpVector[0], mUpVector[1], mUpVector[2]);
+}
+
+void Camera::lookAt(Vec3f eye, Vec3f at, Vec3f up) {
+	// Using https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluLookAt.xml
+	/* Let F = centerX - eyeX centerY - eyeY centerZ - eyeZ
+	Let UP be the vector upX upY upZ .
+	Then normalize as follows :
+	f = F F
+	UP ″ = UP UP
+
+
+		Finally, let s = f × UP ″, and u = s s × f .
+
+		M is then constructed as follows :
+	M = s ⁡ 0 s ⁡ 1 s ⁡ 2 0 u ⁡ 0 u ⁡ 1 u ⁡ 2 0 - f ⁡ 0 - f ⁡ 1 - f ⁡ 2 0 0 0 0 1
+
+		and gluLookAt is equivalent to
+		glMultMatrixf(M);
+	glTranslated(-eyex, -eyey, -eyez); */
+	
+	/*Vec3f F = at - eye; 
+	F.normalize();
+	up.normalize();
+	Vec3f s = F * up;
+	s.normalize();
+	Vec3f u = s * F; */
+
 }
 
 #pragma warning(pop)
