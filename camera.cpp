@@ -176,38 +176,44 @@ void Camera::applyViewingTransform() {
 	if( mDirtyTransform )
 		calculateViewingTransformParameters();
 
+	
 	// Place the camera at mPosition, aim the camera at
 	// mLookAt, and twist the camera such that mUpVector is up
-	gluLookAt(	mPosition[0], mPosition[1], mPosition[2],
+	/*gluLookAt(	mPosition[0], mPosition[1], mPosition[2],
 				mLookAt[0],   mLookAt[1],   mLookAt[2],
-				mUpVector[0], mUpVector[1], mUpVector[2]);
+				mUpVector[0], mUpVector[1], mUpVector[2]);*/
+	//Use my lookAt function instead of gluLookAt
+	lookAt(mPosition, mLookAt, mUpVector);
 }
 
 void Camera::lookAt(Vec3f eye, Vec3f at, Vec3f up) {
 	// Using https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluLookAt.xml
-	/* Let F = centerX - eyeX centerY - eyeY centerZ - eyeZ
-	Let UP be the vector upX upY upZ .
-	Then normalize as follows :
-	f = F F
-	UP ″ = UP UP
+	Vec3f f, u, s;
 
 
-		Finally, let s = f × UP ″, and u = s s × f .
-
-		M is then constructed as follows :
-	M = s ⁡ 0 s ⁡ 1 s ⁡ 2 0 u ⁡ 0 u ⁡ 1 u ⁡ 2 0 - f ⁡ 0 - f ⁡ 1 - f ⁡ 2 0 0 0 0 1
-
-		and gluLookAt is equivalent to
-		glMultMatrixf(M);
-	glTranslated(-eyex, -eyey, -eyez); */
-	
-	/*Vec3f F = at - eye; 
-	F.normalize();
-	up.normalize();
-	Vec3f s = F * up;
+	f = at - eye; 
+	u = up;
+	f.normalize();
+	s = f ^ u;
 	s.normalize();
-	Vec3f u = s * F; */
+	u = s ^ f; 
 
+	Mat4f M; 
+	M[0][0] = s[0];
+	M[1][0] = s[1];
+	M[2][0] = s[2];
+
+	M[0][1] = u[0];
+	M[1][1] = u[1];
+	M[2][1] = u[2];
+
+	M[0][2] = -f[0];
+	M[1][2] = -f[1];
+	M[2][2] = -f[2];
+
+
+	glMultMatrixf(&M[0][0]);
+	glTranslated(-eye[0], -eye[1], -eye[2]);
 }
 
 #pragma warning(pop)
