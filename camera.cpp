@@ -129,7 +129,7 @@ void Camera::dragMouse( int x, int y )
 	{
 	case kActionTranslate:
 		{
-			printf("translating\n");
+			//printf("translating\n");
 			calculateViewingTransformParameters();
 
 			double xTrack =  -mouseDelta[0] * kMouseTranslationXSensitivity;
@@ -146,7 +146,7 @@ void Camera::dragMouse( int x, int y )
 		}
 	case kActionRotate:
 		{
-			printf("rotating\n");
+			//printf("rotating\n");
 			float dAzimuth		=   -mouseDelta[0] * kMouseRotationSensitivity;
 			float dElevation	=   mouseDelta[1] * kMouseRotationSensitivity;
 			
@@ -157,14 +157,14 @@ void Camera::dragMouse( int x, int y )
 		}
 	case kActionZoom:
 		{
-			printf("zooming\n");
+			//printf("zooming\n");
 			float dDolly = -mouseDelta[1] * kMouseZoomSensitivity;
 			setDolly(getDolly() + dDolly);
 			break;
 		}
 	case kActionTwist:
 		{	
-			printf("twisting\n");
+			//printf("twisting\n");
 			float dTwist = -mouseDelta[0] * kMouseTwistSensitivity;	
 			setTwist(getTwist() + dTwist);
 			break;
