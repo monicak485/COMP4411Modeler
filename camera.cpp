@@ -185,29 +185,33 @@ void Camera::applyViewingTransform() {
 
 void Camera::lookAt(Vec3f eye, Vec3f at, Vec3f up) {
 	// Using https://www.khronos.org/registry/OpenGL-Refpages/gl2.1/xhtml/gluLookAt.xml
-	/* Let F = centerX - eyeX centerY - eyeY centerZ - eyeZ
-	Let UP be the vector upX upY upZ .
-	Then normalize as follows :
-	f = F F
-	UP ″ = UP UP
 
-
-		Finally, let s = f × UP ″, and u = s s × f .
-
-		M is then constructed as follows :
-	M = s ⁡ 0 s ⁡ 1 s ⁡ 2 0 u ⁡ 0 u ⁡ 1 u ⁡ 2 0 - f ⁡ 0 - f ⁡ 1 - f ⁡ 2 0 0 0 0 1
-
-		and gluLookAt is equivalent to
-		glMultMatrixf(M);
-	glTranslated(-eyex, -eyey, -eyez); */
 	
-	/*Vec3f F = at - eye; 
+	Vec3f F = at - eye; 
 	F.normalize();
 	up.normalize();
-	Vec3f s = F * up;
+	Vec3f s = F ^ up;
 	s.normalize();
-	Vec3f u = s * F; */
+	Vec3f u = s ^ F; 
 
+	Mat4f M; 
+	M[0][0] = s[0];
+	M[1][0] = s[1];
+	M[2][0] = s[2];
+
+	M[0][1] = u[0];
+	M[1][1] = u[0];
+	M[2][1] = u[0];
+
+	M[0][2] = F[0];
+	M[1][2] = F[0];
+	M[2][2] = F[0];
+
+	float m[16]; 
+	M.getGLMatrix(m);
+
+	glMultMatrixf(m);
+	glTranslated(-eye[0], -eye[1], -eye[2]);
 }
 
 #pragma warning(pop)
