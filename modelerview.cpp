@@ -10,7 +10,7 @@
 static const int	kMouseRotationButton			= FL_LEFT_MOUSE;
 static const int	kMouseTranslationButton			= FL_MIDDLE_MOUSE;
 static const int	kMouseZoomButton				= FL_RIGHT_MOUSE;
-static const int	kMouseTwistButton				= FL_MIDDLE_MOUSE;
+//static const int	kMouseTwistButton				= FL_MIDDLE_MOUSE;
 
 ModelerView::ModelerView(int x, int y, int w, int h, char *label)
 : Fl_Gl_Window(x,y,w,h,label)
@@ -37,9 +37,11 @@ int ModelerView::handle(int event)
 			{
 			case kMouseRotationButton:
 				m_camera->clickMouse(kActionRotate, eventCoordX, eventCoordY );
+				if (Fl::event_shift() != 0)
+					m_camera->clickMouse(kActionTwist, eventCoordX, eventCoordY);
 				break;
 			case kMouseTranslationButton:
-				m_camera->clickMouse(kActionTwist, eventCoordX, eventCoordY );
+				m_camera->clickMouse(kActionTranslate, eventCoordX, eventCoordY );
 				break;
 			case kMouseZoomButton:
 				m_camera->clickMouse(kActionZoom, eventCoordX, eventCoordY );
@@ -65,14 +67,6 @@ int ModelerView::handle(int event)
 				break;
 			}
           //  printf("release %d %d\n", eventCoordX, eventCoordY);
-		}
-		break;
-	case FL_MOUSEWHEEL:
-		switch (eventButton)
-		{
-			case kMouseTwistButton:
-			m_camera->clickMouse(kActionTwist, eventCoordX, eventCoordY);
-			break;
 		}
 		break;
 	default:
