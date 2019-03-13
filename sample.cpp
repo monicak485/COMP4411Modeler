@@ -15,6 +15,9 @@ public:
         : ModelerView(x,y,w,h,label) { }
 
     virtual void draw();
+private:
+	void drawHead();
+	void drawNeck();
 };
 
 // We need to make a creator function, mostly because of
@@ -42,7 +45,10 @@ void SampleModel::draw()
 	glPopMatrix();
 
 	// draw the sample model
-	setAmbientColor(.1f,.1f,.1f);
+	drawHead();
+	drawNeck();
+
+	/*setAmbientColor(.1f,.1f,.1f);
 	setDiffuseColor(COLOR_GREEN);
 	glPushMatrix();
 	glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
@@ -67,7 +73,27 @@ void SampleModel::draw()
 		drawCylinder(4, 0.1, 0.2);
 		glPopMatrix();
 
+	glPopMatrix();//1.1(UPEER TORSO)+0.8(HEAD(*/
+}
+void SampleModel::drawHead() {
+	setDiffuseColor(COLOR_GREEN);
+	glPushMatrix();
+	glTranslated(0.0, 2.0, 0.0);
+	drawSphere(0.9);
 	glPopMatrix();
+
+}
+
+void SampleModel::drawNeck() {
+	setDiffuseColor(COLOR_GREEN);
+	glPushMatrix();
+	glTranslated(0.0, 1.1 + 0.1, 0.0);
+	glScaled(0.4, 0.4, 0.4);
+	glTranslated(-0.5, -0.5, -0.5);
+	drawBox(1,1,1);
+
+	glPopMatrix();
+
 }
 
 int main()
