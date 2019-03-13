@@ -19,8 +19,10 @@ private:
 	void drawHead();
 	void drawNeck();
 	void drawUpperBody();
-	void drawLeftUpperArm();
-	void drawRightUpperArm();
+	void drawLeftArm();
+	void drawRightArm();
+	void drawLeftUpperLeg();
+	void drawRightUpperLeg();
 };
 
 // We need to make a creator function, mostly because of
@@ -43,7 +45,7 @@ void SampleModel::draw()
 	setAmbientColor(.1f, .1f, .1f);
 	setDiffuseColor(COLOR_RED);
 	glPushMatrix();
-	glTranslated(-5, 0, -5);
+	glTranslated(-5, -3, -5);
 	drawBox(10, 0.01f, 10);
 	glPopMatrix();
 
@@ -51,9 +53,10 @@ void SampleModel::draw()
 	drawHead();
 	drawNeck();
 	drawUpperBody();
-	drawLeftUpperArm();
-	drawRightUpperArm();
-
+	drawLeftArm();
+	drawRightArm();
+	drawLeftUpperLeg();
+	drawRightUpperLeg();
 	/*setAmbientColor(.1f,.1f,.1f);
 	setDiffuseColor(COLOR_GREEN);
 	glPushMatrix();
@@ -112,7 +115,7 @@ void SampleModel::drawUpperBody() {
 
 }
 
-void SampleModel::drawLeftUpperArm() {
+void SampleModel::drawLeftArm() {
 	setDiffuseColor(COLOR_WHITE);
 	glPushMatrix();
 	glTranslated(-LEFT_UPPER_ARM1/2+0.8 , 0, -LEFT_UPPER_ARM3 / 2);
@@ -121,7 +124,7 @@ void SampleModel::drawLeftUpperArm() {
 	glPopMatrix();
 
 }
-void SampleModel::drawRightUpperArm() {
+void SampleModel::drawRightArm() {
 	setDiffuseColor(COLOR_WHITE);
 	glPushMatrix();
 	glTranslated(-RIGHT_UPPER_ARM1 / 2 - 0.8, 0, -RIGHT_UPPER_ARM3 / 2);
@@ -130,7 +133,24 @@ void SampleModel::drawRightUpperArm() {
 	glPopMatrix();
 
 }
+void SampleModel::drawLeftUpperLeg() {
+	setDiffuseColor(COLOR_WHITE);
+	glPushMatrix();
+	glTranslated(-LEFT_UPPER_LEG1 / 2 -0.35, -1, -LEFT_UPPER_ARM3 / 2);
+	glScaled(0.5, 1.8, 0.5);
+	drawBox(1, 1, 1);
+	glPopMatrix();
 
+}
+void SampleModel::drawRightUpperLeg() {
+	setDiffuseColor(COLOR_WHITE);
+	glPushMatrix();
+	glTranslated(-RIGHT_UPPER_LEG1 / 2 +0.35, -1, -RIGHT_UPPER_ARM3 / 2);
+	glScaled(0.5, 1.8, 0.5);
+	drawBox(1, 1, 1);
+	glPopMatrix();
+
+}
 int main()
 {
 	// Initialize the controls

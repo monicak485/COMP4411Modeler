@@ -32,6 +32,12 @@ enum SampleModelControls
 #define RIGHT_UPPER_ARM1 0.3
 #define RIGHT_UPPER_ARM2 1.5
 #define RIGHT_UPPER_ARM3 0.5
+#define LEFT_UPPER_LEG1 0.3
+#define LEFT_UPPER_LEG2 1.5
+#define LEFT_UPPER_LEG3 0.5
+#define RIGHT_UPPER_LEG1 0.3
+#define RIGHT_UPPER_LEG2 1.5
+#define RIGHT_UPPER_LEG3 0.5
 
 // We'll be getting the instance of the application a lot; 
 // might as well have it as a macro.
