@@ -17,6 +17,21 @@ enum SampleModelControls
 #define COLOR_RED		1.0f, 0.0f, 0.0f
 #define COLOR_GREEN		0.0f, 1.0f, 0.0f
 #define COLOR_BLUE		0.0f, 0.0f, 1.0f
+#define COLOR_WHITE		1.0f, 1.0f, 1.0f
+#define COLOR_BLACK		0.0f, 0.0f, 0.0f
+
+
+// Model Size
+#define HEAD_RADIUS 0.9
+#define UPPER_BODY_SIZE1 5
+#define UPPER_BODY_SIZE2 3
+#define UPPER_BODY_SIZE3 2
+#define LEFT_UPPER_ARM1 0.3
+#define LEFT_UPPER_ARM2 1.5
+#define LEFT_UPPER_ARM3 0.5
+#define RIGHT_UPPER_ARM1 0.3
+#define RIGHT_UPPER_ARM2 1.5
+#define RIGHT_UPPER_ARM3 0.5
 
 // We'll be getting the instance of the application a lot; 
 // might as well have it as a macro.
