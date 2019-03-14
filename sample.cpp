@@ -1,3 +1,4 @@
+/*
 // The sample model.  You should build a file
 // very similar to this for when you make your model.
 #include "modelerview.h"
@@ -48,7 +49,7 @@ void SampleModel::draw()
 	drawHead();
 	drawNeck();
 
-	/*setAmbientColor(.1f,.1f,.1f);
+	setAmbientColor(.1f,.1f,.1f);
 	setDiffuseColor(COLOR_GREEN);
 	glPushMatrix();
 	glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
@@ -73,7 +74,7 @@ void SampleModel::draw()
 		drawCylinder(4, 0.1, 0.2);
 		glPopMatrix();
 
-	glPopMatrix();//1.1(UPEER TORSO)+0.8(HEAD(*/
+	glPopMatrix();//1.1(UPEER TORSO)+0.8(HEAD(
 }
 void SampleModel::drawHead() {
 	setDiffuseColor(COLOR_GREEN);
@@ -111,3 +112,4 @@ int main()
     ModelerApplication::Instance()->Init(&createSampleModel, controls, NUMCONTROLS);
     return ModelerApplication::Instance()->Run();
 }
+*/

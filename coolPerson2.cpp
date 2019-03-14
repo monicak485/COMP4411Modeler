@@ -56,18 +56,26 @@ void SampleModel::draw()
 	glPopMatrix();
 
 	// draw the sample model
-	drawHead();
-	drawFace();
-	drawNeck();
-	drawUpperBody();
-	drawLeftUpperArm();
-	drawRightUpperArm();
-	drawLeftLowerArm();
-	drawRightLowerArm();
-	drawLeftUpperLeg();
-	drawRightUpperLeg();
-	drawLeftLowerLeg();
-	drawRightLowerLeg();
+	setAmbientColor(.1f, .1f, .1f);
+	setDiffuseColor(COLOR_GREEN);
+	glPushMatrix();
+	glTranslated(VAL(XPOS), VAL(YPOS), VAL(ZPOS));
+
+	
+		drawHead();
+		drawFace();
+		drawNeck();
+		drawUpperBody();
+		drawLeftUpperArm();
+		drawRightUpperArm();
+		drawLeftLowerArm();
+		drawRightLowerArm();
+		drawLeftUpperLeg();
+		drawRightUpperLeg();
+		drawLeftLowerLeg();
+		drawRightLowerLeg();
+
+	glPopMatrix();
 	/*setAmbientColor(.1f,.1f,.1f);
 	setDiffuseColor(COLOR_GREEN);
 	glPushMatrix();
