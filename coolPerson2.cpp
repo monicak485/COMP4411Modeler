@@ -138,6 +138,7 @@ void SampleModel::drawFace() {
 void SampleModel::drawNeck() {
 	setDiffuseColor(COLOR_GREEN);
 	glPushMatrix();
+	glRotated(VAL(HEADYROT), 0.0, 1.0, 0.0);
 	glTranslated(0.0, 2.1, 0.0);
 	glScaled(0.4, VAL(HEIGHT)*4, 0.4);
 	glTranslated(-0.5, -0.9, -0.5);
