@@ -34,3 +34,8 @@
 *.VC.opendb
 *.ilk
 *.ipch
+*.suo
+*.log
+*.tlog
+*.ilk
+*.pdb
