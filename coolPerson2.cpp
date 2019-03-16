@@ -199,6 +199,7 @@ void SampleModel::drawRightLowerArm() {
 void SampleModel::drawLeftUpperLeg() {
 	setDiffuseColor(COLOR_WHITE);
 	glPushMatrix();
+	glRotated(VAL(LLEGROT), 1.0, 0.0, 0.0);
 	glTranslated(-LEFT_UPPER_LEG1 / 2 - 0.35, -1, -LEFT_UPPER_ARM3 / 2);
 	glScaled(0.45, 1.8, 0.5);
 	drawBox(1, 1, 1);
@@ -208,6 +209,7 @@ void SampleModel::drawLeftUpperLeg() {
 void SampleModel::drawRightUpperLeg() {
 	setDiffuseColor(COLOR_WHITE);
 	glPushMatrix();
+	glRotated(VAL(RLEGROT), 1.0, 0.0, 0.0);
 	glTranslated(-RIGHT_UPPER_LEG1 / 2 + 0.2, -1, -RIGHT_UPPER_LEG3 / 2);
 	glScaled(0.45, 1.8, 0.5);
 	drawBox(1, 1, 1);
@@ -217,6 +219,7 @@ void SampleModel::drawRightUpperLeg() {
 void SampleModel::drawLeftLowerLeg() {
 	setDiffuseColor(COLOR_WHITE);
 	glPushMatrix();
+	glRotated(VAL(LLEGROT), 1.0, 0.0, 0.0);
 	glTranslated(-LEFT_UPPER_LEG1 / 2 - 0.35 , -1.5-1.6, -LEFT_UPPER_LEG3 / 2);
 	glScaled(0.45, 2.0 , 0.5);
 	drawBox(1, 1, 1);
@@ -226,6 +229,7 @@ void SampleModel::drawLeftLowerLeg() {
 void SampleModel::drawRightLowerLeg() {
 	setDiffuseColor(COLOR_WHITE);
 	glPushMatrix();
+	glRotated(VAL(RLEGROT), 1.0, 0.0, 0.0);
 	glTranslated(-RIGHT_UPPER_LEG1 / 2 + 0.2, -1.5-1.6, -RIGHT_UPPER_LEG3 / 2);
 	glScaled(0.45, 2.0, 0.5);
 	drawBox(1, 1, 1);
@@ -245,6 +249,8 @@ int main()
 	controls[ROTATE] = ModelerControl("Rotate", -135, 135, 1, 0);
 	controls[HEADXROT] = ModelerControl("Head X Rotation", -27, 27, 1, 0);
 	controls[HEADYROT] = ModelerControl("Head Y Rotation", -25, 25, 1, 0);
+	controls[RLEGROT] = ModelerControl("Leg Rotation", -65, 16, 1, 0);
+	controls[LLEGROT] = ModelerControl("Leg Rotation", -65, 16, 1, 0);
 
 	ModelerApplication::Instance()->Init(&createSampleModel, controls, NUMCONTROLS);
 	return ModelerApplication::Instance()->Run();
