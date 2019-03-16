@@ -101,6 +101,8 @@ void SampleModel::draw()
 void SampleModel::drawHead() {
 	setDiffuseColor(COLOR_GREEN);
 	glPushMatrix();
+	glRotated(VAL(HEADXROT), 1.0, 0.0, 0.0);
+	glRotated(VAL(HEADYROT), 0.0, 1.0, 0.0);
 	glTranslated(0.0, HEAD_RADIUS + 1.6 + VAL(HEIGHT), 0.0);
 	drawSphere(0.9);
 	glPopMatrix();
@@ -111,14 +113,20 @@ void SampleModel::drawFace() {
 	//EYES
 	setDiffuseColor(COLOR_BLACK);
 	glPushMatrix();
+	glRotated(VAL(HEADXROT), 1.0, 0.0, 0.0);
+	glRotated(VAL(HEADYROT), 0.0, 1.0, 0.0);
 	glTranslated(0.5, HEAD_RADIUS +1.8 +VAL(HEIGHT), 0.7);
 	drawSphere(0.1);
+	glRotated(VAL(HEADXROT), 1.0, 0.0, 0.0);
+	glRotated(VAL(HEADYROT), 0.0, 1.0, 0.0);
 	glTranslated(-1,0, 0);
 	drawSphere(0.1);
 	glPopMatrix();
 	//MOUTH
 	setDiffuseColor(COLOR_RED);
 	glPushMatrix();
+	glRotated(VAL(HEADXROT), 1.0, 0.0, 0.0);
+	glRotated(VAL(HEADYROT), 0.0, 1.0, 0.0);
 	glTranslated(-0.25, 1.8 + VAL(HEIGHT), 0.7);
 	glRotated(20, 1.0, 0.0, 0.0);
 	glTranslated(0, 0, -0.4);
@@ -234,6 +242,8 @@ int main()
 	controls[ZPOS] = ModelerControl("Z Position", -5, 5, 0.1f, 0);
 	controls[HEIGHT] = ModelerControl("Height", 0.4, 0.8, 0.1f, 0.4);
 	controls[ROTATE] = ModelerControl("Rotate", -135, 135, 1, 0);
+	controls[HEADXROT] = ModelerControl("Head X Rotation", -27, 27, 1, 0);
+	controls[HEADYROT] = ModelerControl("Head Y Rotation", -25, 25, 1, 0);
 
 	ModelerApplication::Instance()->Init(&createSampleModel, controls, NUMCONTROLS);
 	return ModelerApplication::Instance()->Run();
