@@ -32,3 +32,5 @@
 *.app
 
 *.VC.opendb
+*.ilk
+*.ipch
